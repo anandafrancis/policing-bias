@@ -8,7 +8,6 @@ from models import decisionTree, svm_model
 
 
 
-
 @st.cache_data
 def load_data(file):
     '''Load csv files into pandas'''
@@ -65,7 +64,7 @@ def main():
                             'Pie Charts',
                             'Bias Buster: Best AI Detective Around',
                             'Decision Trees',
-                            'Support Vector Machine'
+                            'Support Vector Machines'
                           ],)
     
     # create homepage
@@ -79,12 +78,13 @@ def main():
         st.write('\n\n')
 
         # add description of the project
-        st.write("Welcome to my comprehensive crime data dashboard, designed to help you analyze and "+ 
+        st.write("Welcome to my comprehensive policing data dashboard, designed to help you analyze and "+ 
                  "identify potential bias in policing using state-of-the-art visualizations, tree-based "+ 
                  "models, and natural language processing. Our dashboard is built around three carefully "+
                 "curated datasets, all from 2022, each with its own unique set of analysis tools. On the left-hand side of "+ 
                 "the page, you'll find our intuitive navigation menu, allowing you to easily switch between "+ 
                 "the various web pages and explore the different forms of analysis available.")
+        
         
         st.write('\n\n')
 
@@ -243,7 +243,6 @@ def main():
         st.write('\n\n\n')
         
         st.subheader("Frequency Plots of Incidents By District")
-
         barChart(summary, 'district', 'shootings', 
                        'Shootings in 2022 By Policing District', 'District', 'Frequency')
         
@@ -260,6 +259,7 @@ def main():
         st.subheader("Customizable Frequency Plot of Specific Crimes By District")        
         customBarChart('offense_description', 'district', 'hour', crimes)
 
+    # create new page
     elif page == "Scatterplots":
 
         st.title("Scatterplots")
@@ -299,9 +299,12 @@ def main():
 
         
 
+    # create new page
     elif page == 'Pie Charts':
 
         st.title("Pie Charts")
+        st.write('\n\n\n')
+        st.write('\n\n\n')
 
         st.subheader('Methodology')
         st.write('I created pie charts to display the distribution of each feature based on a group variable. I have also developed customizable charts where you can group data based on various factors such as the police officer, their supervisor, the district, zip code, city, and whether a civilian was frisked or not, to show the percentage breakdown for each of these groups with respect to the race of the civilian and whether they were frisked.')
@@ -343,9 +346,10 @@ def main():
         customPieChart('hour', 'build', field, 'FIELD INTERACTIONS')
         customPieChart('hour', 'hair_style', field, 'FIELD INTERACTIONS')
 
+    # create new page
     elif page == 'Bias Buster: Best AI Detective Around':
-        # Set the app title
-        st.title("Bias Buster")
+        
+        st.title("Bias Buster: Best AI Detective Around")
 
         st.subheader('Methodology')
         st.write("Bias Buster is an AI-powered chat bot designed to detect potential biases in police interactions with civilians. Utilizing OpenAI's API, it analyzes the notes taken by police officers during these interactions to identify any underlying biases. With Bias Buster Knows All, users can engage in discourse with the chat bot by asking questions and receiving responses. Additionally, Find the Bias allows users to input a specific case number, which serves as the primary key for a field police interaction, and view the corresponding notes along with Bias Buster's analysis of whether bias was present or not.")
@@ -356,6 +360,7 @@ def main():
 
         st.subheader('Bias Buster Knows All')
         st.write('Ask any questions or may any statement regarding policing, bias, AI, ANYTHING!')
+        
         # Add a text input field for the user's message
         user_input = st.text_input("Enter your message")
 
@@ -369,12 +374,14 @@ def main():
         st.subheader('Find the Bias')
         detectBias(field)
 
-
+    # create new page
     elif page == 'Decision Trees':
 
         st.title('Decision Tree Models')
+        
         st.write('\n\n\n')
         st.write('\n\n\n')
+
         st.subheader('Methodology')
         st.write("A decision tree is a predictive model that uses a tree-like structure to make predictions based on input features. Each internal node represents a decision based on a feature, and each leaf node represents a prediction. To interpret the decision tree visualization, follow the path from the root node to a leaf node, which represents a decision path that leads to the predicted outcome or class variable.")
         st.write("I used the sklearn library to build a decision tree model that identifies the most important features for predicting policing districts. Identifying feature importance is critical to detecting and addressing bias in policing, as it can reveal which characteristics are most influential in determining how policing is carried out in different neighborhoods. To visualize the feature importance, I created a bar graph where the height of each bar represents how influential a particular feature is in predicting the policing district.")
@@ -420,12 +427,14 @@ def main():
 
     
             
-
-    elif page == 'Support Vector Machine':
+    # create new page
+    elif page == 'Support Vector Machines':
 
         st.title('Support Vector Machine Models')
+
         st.write('\n\n\n')
         st.write('\n\n\n')
+
         st.subheader('Methodology')
         st.write("A multiclass SVM is a machine learning algorithm that is specifically designed to classify data into more than two classes. It works by identifying the optimal hyperplane that can best separate different classes of data. In this particular use case, I have utilized the algorithm to categorize data into different policing districts based on input features. A linear kernel function has been used to generate coefficients for each feature.")
         st.write("There are three datasets available, each with different variables used to classify policing districts. You can create various SVM algorithms based on these datasets. Each model generates a bar graph that shows the coefficient values for each feature. If the coefficient value is 0, then no bar will be displayed. Additionally, the model's performance metrics, such as accuracy, recall, f1 and precision, will be outputted.")
