@@ -1,9 +1,10 @@
 import streamlit as st
 import openai
+import os
 
 
 # load API key
-openai.api_key = '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'
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 def chatResponse(user_input):
     prompt = f"User: {user_input}\Bias Buster:"
