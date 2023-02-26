@@ -2,8 +2,8 @@ import streamlit as st
 import openai
 
 
-# load API key for GPT3
-openai.api_key = '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'
+# load API key
+openai.api_key = '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'
 
 def chatResponse(user_input):
     prompt = f"User: {user_input}\Bias Buster:"

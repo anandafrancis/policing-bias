@@ -9,10 +9,10 @@ import seaborn as sns
 import numpy as np
 import plotly.graph_objects as go
 import plotly.express as px
-import openai
 import os
 
 def heatmap(data, x_col, y_col):
+    
     # Calculate chi-squared p-values
     p_values = []
     for col in data.columns:
@@ -24,12 +24,12 @@ def heatmap(data, x_col, y_col):
 
     # Create a heatmap
     fig = go.Figure(data=go.Heatmap(
-        z=p_values.values.T, # Transpose the p-values array to match the heatmap dimensions
-        x=p_values.index, # Set the x-axis labels to the X variable names
-        y=[y_col], # Set the y-axis label to the Y variable name
-        colorscale='Viridis', # Set the color scale
-        colorbar=dict(title='p-value'), # Set the title of the color bar
-        hovertemplate='p-value: %{z:.2f}<extra></extra>' # Set the format of the hover text
+        z=p_values.values.T, 
+        x=p_values.index, 
+        y=[y_col], 
+        colorscale='Viridis', 
+        colorbar=dict(title='p-value'), 
+        hovertemplate='p-value: %{z:.2f}<extra></extra>'
     ))
 
     # Add title and axis labels
@@ -40,6 +40,7 @@ def heatmap(data, x_col, y_col):
     st.plotly_chart(fig)
 
 def scatter2D(df, x, y, _class):
+
     trace = go.Scatter(
         x=df[x],
         y=df[y],
@@ -64,11 +65,13 @@ def scatter2D(df, x, y, _class):
     st.plotly_chart(fig)
         
 def barChart(df, x_col, y_col, title, x_label, y_label):
+
     fig = go.Figure([go.Bar(x=df[x_col], y=df[y_col])])
     fig.update_layout(title=title, xaxis_title=x_label, yaxis_title=y_label)
     st.plotly_chart(fig)
 
 def customBarChart(ycol, xcol, countCol, df):
+
     # Create a drop-down menu for grouping variable selection
     group_var = st.selectbox('Select a grouping variable', df[ycol].unique())
 
@@ -93,7 +96,7 @@ def scatter3D(df, x, y, z, _class):
         mode='text',
         marker=dict(
             size=12,
-            colorscale='Viridis', # choose a colorscale
+            colorscale='Viridis',
             opacity=0.8
         ),
         text=df[_class],

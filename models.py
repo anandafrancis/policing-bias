@@ -3,7 +3,7 @@ from sklearn.tree import DecisionTreeClassifier, plot_tree
 import plotly.express as px
 import streamlit as st
 import matplotlib.pyplot as plt
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 import plotly.figure_factory as ff
 from sklearn import svm
 
