@@ -3,7 +3,7 @@ import openai
 
 
 # load API key
-openai.api_key = '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'
+openai.api_key = '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'
 
 def chatResponse(user_input):
     prompt = f"User: {user_input}\Bias Buster:"
