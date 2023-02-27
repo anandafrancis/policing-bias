@@ -5,6 +5,7 @@ from visuals import heatmap, barChart, scatter2D, scatter3D, bubbleChart
 from visuals import customBarChart, pieChart, customPieChart, dropdrownPieChart
 from chatbot import chatResponse, detectBias
 from models import decisionTree, svm_model
+from featureEng import featureSelector
 
 
 
@@ -63,8 +64,9 @@ def main():
                             "Scatterplots",
                             'Pie Charts',
                             'Bias Buster: Best AI Detective Around',
+                            'Feature Engineering',
                             'Decision Trees',
-                            'Support Vector Machines'
+                            'Support Vector Machines',
                           ],)
     
     # create homepage
@@ -373,6 +375,54 @@ def main():
 
         st.subheader('Find the Bias')
         detectBias(field)
+
+    # create new page
+    elif page == 'Feature Engineering':
+
+        st.title('Feature Engineering')
+        st.write('\n\n\n')
+        st.write('\n\n\n')
+
+        st.subheader('Methodology')
+        st.write(' I explored different packages, such as SelectPercentile, f_classif, mutual_info_classif, chi2, and SelectKBestModels from sci-kit learn to determine the best features to use. The user can choose which model they would like to use to find the features most closely related to the target variable: policing district. Despite comprehensive feature selection, the model performance was still low. Given more time, I would explore boosting and stacking to improve model outputs. However, for now, I found a way to demonstrate their value through feature importance and visualizations.')
+        
+        st.write('\n\n\n')
+        st.write('\n\n\n')
+
+        st.header('Feature Selection for Shooting Data')
+        # remove non x variables
+        xColSD = list(shootingOH.columns)
+        xColSD.remove('district')
+
+        featureSelector(shootingOH, xColSD, 'district', 'SD')
+
+        st.write('\n\n\n')
+        st.write('\n\n\n')
+        st.write('\n\n\n')
+        st.write('\n\n\n')
+
+        st.header('Feature Selection for Crimes Data')
+        # remove non x variables
+        xColCD = list(shootingOH.columns)
+        xColCD.remove('district')
+
+
+        featureSelector(shootingOH, xColCD, 'district', 'CD')
+
+
+        st.write('\n\n\n')
+        st.write('\n\n\n')
+        st.write('\n\n\n')
+        st.write('\n\n\n')
+
+
+        st.header('Feature Selection for Field Interactions Data')
+        # remove non x variables
+        xColFD = list(shootingOH.columns)
+        xColFD.remove('district')
+    
+        featureSelector(shootingOH, xColFD, 'district', 'FD')
+
 
     # create new page
     elif page == 'Decision Trees':
