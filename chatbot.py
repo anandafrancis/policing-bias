@@ -4,8 +4,8 @@ import os
 
 
 # load API key
-openai.api_key_path = ('.properties')
-openai.api_key = os.getenv("OPENAI_API_KEY")
+#openai.api_key_path = ('.properties')
+openai.api_key = st.secrets["OPENAI_API_KEY"]
 
 def chatResponse(user_input):
     prompt = f"User: {user_input}\Bias Buster:"
