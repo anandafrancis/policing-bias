@@ -132,14 +132,16 @@ def bubbleChart(df, x, y, size, _class):
 def pieChart(valCol, nameCol, df):
 
     fig = px.pie(df, values=valCol, names=nameCol, color_discrete_sequence=px.colors.sequential.RdBu)
-    fig.update_layout(title=f'Breakdown of {valCol.upper()} by {nameCol.upper()} ')
+    fig.update_layout(title=f'Breakdown of {valCol.upper()} by {nameCol.upper()} ',
+                     font=dict(size=20))
     st.plotly_chart(fig)
 
 def customPieChart(valCol, nameCol, df, valTitle):
 
     groupData = df.groupby(nameCol).count().reset_index()
     fig = px.pie(df, values=valCol, names=nameCol, color_discrete_sequence=px.colors.sequential.RdBu)
-    fig.update_layout(title=f'Breakdown of {valTitle} by {nameCol.upper()} ')
+    fig.update_layout(title=f'Breakdown of {valTitle} by {nameCol.upper()} ',
+                     font=dict(size=20))
     st.plotly_chart(fig)
 
 
@@ -154,5 +156,6 @@ def dropdrownPieChart(valCol, nameCol, df, options, key1, key2):
     subsetData = groupData[groupData[group_var] == group_subset]
 
     fig = px.pie(subsetData, values='count', names=nameCol, color_discrete_sequence=px.colors.sequential.RdBu)
-    fig.update_layout(title=f'Breakdown of {nameCol.upper()} from {group_subset.upper()} Within {group_var.upper()} Variable')
+    fig.update_layout(title=f'Breakdown of {nameCol.upper()} from {group_subset.upper()} Within {group_var.upper()} Variable',
+                     font=dict(size=20))
     st.plotly_chart(fig)
