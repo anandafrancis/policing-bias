@@ -403,11 +403,11 @@ def main():
 
         st.header('Feature Selection for Crimes Data')
         # remove non x variables
-        xColCD = list(shootingOH.columns)
+        xColCD = list(crimesOH.columns)
         xColCD.remove('district')
 
 
-        featureSelector(shootingOH, xColCD, 'district', 'CD')
+        featureSelector(crimesOH, xColCD, 'district', 'CD')
 
 
         st.write('\n\n\n')
@@ -418,10 +418,10 @@ def main():
 
         st.header('Feature Selection for Field Interactions Data')
         # remove non x variables
-        xColFD = list(shootingOH.columns)
+        xColFD = list(fieldOH.columns)
         xColFD.remove('district')
     
-        featureSelector(shootingOH, xColFD, 'district', 'FD')
+        featureSelector(fieldOH, xColFD, 'district', 'FD')
 
 
     # create new page
