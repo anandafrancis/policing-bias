@@ -420,6 +420,12 @@ def main():
         # remove non x variables
         xColFD = list(fieldOH.columns)
         xColFD.remove('district')
+        xColFD.remove('fc_num')
+        xColFD.remove('city')
+        xColFD.remove('zip')
+        xColFD.remove('contact_officer_name')
+        xColFD.remove('supervisor_name')
+        xColFD.remove('contact_reason')
     
         featureSelector(fieldOH, xColFD, 'district', 'FD')
 
