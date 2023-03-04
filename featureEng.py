@@ -5,6 +5,7 @@ import streamlit as st
 
 def featureSelector(df, xCols, yCol, key):
 
+    df = df.dropna()
     X = df[xCols]
     y = df[yCol]
 
